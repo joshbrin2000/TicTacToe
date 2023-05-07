@@ -1,0 +1,46 @@
+Tic Tac Toe:
+
+Description: Have user choose their symbol, x or o. After choosing symbol, the board loads, and the program
+decides who goes first. If computer, make a good move: look for winning move, then look for blocking move,
+then look for centre, then corner tile, then other space. If human, let them choose tile based on number entered.
+Keep doing this until either a) computer wins b) player wins c) tie (full board). Print appropriate statement,
+then prompt user if they want to play again or quit.
+
+Layout:
+    Print title screen
+    Print message for user to choose x or o
+    Calculate who goes first
+    For computer turns, the AI needs to:
+     look at a copy of the board and see if there is an open space:
+        if there is no space, call a tie and quit the game
+        if so, then see if there is a winning move:
+            if so, then move the token to the first possible one and end turn
+            if not, then see if there is a move that would block a player win:
+                if so, move token to first possible block and end turn
+                if not, then try to get the centre tile:
+                    if not possible, then try to get a corner tile:
+                        if not possible, then try to get any space at all
+    For player turn:
+        get input from player:
+            on invalid type or out of tile range, ask for valid number
+            if valid, see if coinciding slot is available:
+                if not, ask user for valid input again
+                if so, move player token there and check if its a winning move:
+                    if so, print win message and quit game
+                    if not, end player turn and let computer turn commence
+    On win/lose/tie, prompt user to either play again or quit:
+        if play again, reset board and ask user what token they want to be
+        if quit, quit game
+
+Functions:
+    drawBoard: to initialize/draw the board on startup/after each move
+    setTokens: set the player's and computer's tokens
+    randomBeginner: choose who goes first
+    playerMove: if input is available option and the space is empty, put player token on tile indicated from the input
+    computerMove: implement AI
+    isOpen: if the tile is open on the board
+    winCheck: take all possible winning combos, check if there is a winner
+    playAgain: either play again or quit
+
+    Variables:
+        board: a list of 10 spaces, 9 of them used (1-9)
